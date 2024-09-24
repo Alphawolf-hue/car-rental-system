@@ -139,7 +139,7 @@ select top 1 l.*
 from lease l
 join vehicle v on l.carID = v.vehicleID
 join customer c on l.customerID = c.customerID
-order by l.enddate desc
+order by l.enddateÂ desc
 --11. List all payments made in the year 2023.
 select * from payment where year(transactionDate)=2024
 
@@ -174,7 +174,7 @@ order by l.leaseID
 select l.*,v .make,v.model, c.* from lease l
 join vehicle v on l.carID = v.vehicleID
 join customer c on l.customerID = c.customerID
-where l.startDate <= GETDATE() and l.endDate >= GETDATE() and v.[status] = 3
+where l.startDate <= GETDATE() and l.endDate >= GETDATE() and v.[status] = 'available'
 
 --17. Find the Customer Who Has Spent the Most on Leases.
 select top 1 c.*,sum(p.amount) AS TotalSpentOnLeases from customer c
